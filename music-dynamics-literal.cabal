@@ -6,13 +6,16 @@ author:             Hans Hoglund
 maintainer:         Hans Hoglund
 license:            BSD3
 license-file:       COPYING
-synopsis:           To be written.
+synopsis:           Overloaded dynamics literals.
 category:           Music
 tested-with:        GHC
 build-type:         Simple
 
 description: 
-    To be written.
+    This package allow you to write the dynamic marks of standard notation as expressions
+    overloaded on result type. This works exactly like numeric literals.
+
+    This library is part of the Haskell Music Suite, see <http://musicsuite.github.com>.
 
 library                    
     build-depends: 
