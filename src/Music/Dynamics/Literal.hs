@@ -24,6 +24,19 @@ module Music.Dynamics.Literal (
         sffz, sfz, fz, rfz, fp
   ) where
 
+-- | 
+-- Dynamics literal.
+--
+-- First value is start value, second is end value.
+-- 
+-- * @(Just x, Nothing)@ is a constant dynamic of @x@
+-- * @(Just x, Just y)@ is a dynamic varying from @x@ to @y@
+-- * @(Nothing, Just y)@ is a dynamic varying from the previous level to @y@
+-- * @(Nothing, Nothing)@ is a dynamic varying from the previous level to the next.
+--
+-- For levels, we use @-0.5@ for /mp/, @0.5@ for /mf/ and add or remove one for each level.
+-- @0@ is an unspecified middle level dynamic.
+--
 newtype DynamicsL = DynamicsL { getDynamicsL :: (Maybe Double, Maybe Double) }
 
 -- Like Num can be expressed using arabic numerals, instances
