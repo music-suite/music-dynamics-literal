@@ -4,7 +4,7 @@
 This package allow you to write the dynamic marks of standard notation as expressions
 overloaded on result type. This works exactly like numeric literals.
 
-This library is part of the Haskell Music Suite, see <http://musicsuite.github.com>.
+This library is part of the Music Suite, see <http://musicsuite.github.com>.
 
 ## Requirements
 
