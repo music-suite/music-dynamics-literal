@@ -38,6 +38,7 @@ module Music.Dynamics.Literal (
 -- @0@ is an unspecified middle level dynamic.
 --
 newtype DynamicsL = DynamicsL { getDynamicsL :: (Maybe Double, Maybe Double) }
+    deriving (Eq, Show, Ord)
 
 -- Like Num can be expressed using arabic numerals, instances
 -- of IsDynamics can be expressed using Western pitch names (c, c sharp, c flat etc)    
