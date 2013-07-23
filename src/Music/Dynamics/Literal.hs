@@ -48,6 +48,13 @@ class IsDynamics a where
 instance IsDynamics DynamicsL where
     fromDynamics = id
 
+instance IsDynamics a => IsDynamics (Maybe a) where
+    fromDynamics = Just . fromDynamics
+
+instance IsDynamics Double where
+    fromDynamics (DynamicsL (Just x, _)) = x
+    fromDynamics (DynamicsL (Nothing, _)) = error "IsDynamics Double: No dynamics"
+
 
 pppppp, ppppp, pppp, ppp, pp, _p, mp, mf, _f, ff, fff, ffff, fffff, ffffff ::  IsDynamics a => a
 sffz, sfz, fz, rfz, fp ::  IsDynamics a => a
