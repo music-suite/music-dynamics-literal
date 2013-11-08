@@ -23,12 +23,7 @@ source-repository head
   
 library                    
     build-depends: 
-        base >= 4 && < 5,
-        unix,
-        time,
-        random,
-        semigroups,
-        semigroupoids
+        base >= 4 && < 5
 
     hs-source-dirs: src
     default-language: Haskell2010
