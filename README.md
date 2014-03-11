@@ -1,4 +1,6 @@
 
+[![Build Status](https://travis-ci.org/music-suite/music-dynamics-literal.png?branch=master)](https://travis-ci.org/music-suite/music-dynamics-literal)
+
 # music-dynamics-literal
 
 This package allow you to write the dynamic marks of standard notation as expressions
