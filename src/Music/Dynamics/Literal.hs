@@ -24,7 +24,7 @@ module Music.Dynamics.Literal (
         sffz, sfz, fz, rfz, fp
   ) where
 
--- | 
+-- | 
 -- Dynamics literal.
 --
 -- First value is start value, second is end value.
