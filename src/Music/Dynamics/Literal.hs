@@ -24,6 +24,8 @@ module Music.Dynamics.Literal (
         sffz, sfz, fz, rfz, fp
   ) where
 
+import Control.Applicative
+
 -- | 
 -- Dynamics literal.
 --
@@ -49,7 +51,10 @@ instance IsDynamics DynamicsL where
     fromDynamics = id
 
 instance IsDynamics a => IsDynamics (Maybe a) where
-    fromDynamics = Just . fromDynamics
+    fromDynamics = pure . fromDynamics
+
+instance IsDynamics a => IsDynamics [a] where
+    fromDynamics = pure . fromDynamics
 
 instance IsDynamics Double where
     fromDynamics (DynamicsL (Just x, _)) = x
