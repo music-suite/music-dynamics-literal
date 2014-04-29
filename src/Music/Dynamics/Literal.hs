@@ -24,6 +24,7 @@ module Music.Dynamics.Literal (
         sffz, sfz, fz, rfz, fp
   ) where
 
+import Data.Semigroup
 import Control.Applicative
 
 -- | 
@@ -51,6 +52,9 @@ instance IsDynamics DynamicsL where
     fromDynamics = id
 
 instance IsDynamics a => IsDynamics (Maybe a) where
+    fromDynamics = pure . fromDynamics
+
+instance (Monoid b, IsDynamics a) => IsDynamics (b, a) where
     fromDynamics = pure . fromDynamics
 
 instance IsDynamics a => IsDynamics [a] where
