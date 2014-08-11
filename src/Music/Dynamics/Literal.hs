@@ -17,21 +17,23 @@ module Music.Dynamics.Literal (
         DynamicsL(..),
         IsDynamics(..),
 
-        pppppp, ppppp, pppp, ppp, pp, _p, 
-        mp, mf, 
+        pppppp, ppppp, pppp, ppp, pp, _p,
+        mp, mf,
         _f, ff, fff, ffff, fffff, ffffff,
-        
+
         sffz, sfz, fz, rfz, fp
   ) where
 
-import Data.Semigroup
-import Control.Applicative
+import           Control.Applicative
+import           Data.Fixed
+import           Data.Ratio
+import           Data.Semigroup
 
--- | 
+-- |
 -- Dynamics literal.
 --
 -- First value is start value, second is end value.
--- 
+--
 -- * @(Just x, Nothing)@ is a constant dynamic of @x@
 -- * @(Just x, Just y)@ is a dynamic varying from @x@ to @y@
 -- * @(Nothing, Just y)@ is a dynamic varying from the previous level to @y@
@@ -44,7 +46,7 @@ newtype DynamicsL = DynamicsL { getDynamicsL :: (Maybe Double, Maybe Double) }
     deriving (Eq, Show, Ord)
 
 -- Like Num can be expressed using arabic numerals, instances
--- of IsDynamics can be expressed using Western pitch names (c, c sharp, c flat etc)    
+-- of IsDynamics can be expressed using Western pitch names (c, c sharp, c flat etc)
 class IsDynamics a where
     fromDynamics :: DynamicsL -> a
 
@@ -59,6 +61,15 @@ instance (Monoid b, IsDynamics a) => IsDynamics (b, a) where
 
 instance IsDynamics a => IsDynamics [a] where
     fromDynamics = pure . fromDynamics
+
+instance IsDynamics Float where
+    fromDynamics x = realToFrac (fromDynamics x :: Double)
+
+instance HasResolution a => IsDynamics (Fixed a) where
+    fromDynamics x = realToFrac (fromDynamics x :: Double)
+
+instance Integral a => IsDynamics (Ratio a) where
+    fromDynamics x = realToFrac (fromDynamics x :: Double)
 
 instance IsDynamics Double where
     fromDynamics (DynamicsL (Just x, _)) = x
