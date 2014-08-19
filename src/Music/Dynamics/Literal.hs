@@ -20,12 +20,12 @@ module Music.Dynamics.Literal (
 
         -- * Literal values
 
-        -- * Standard dynamics
+        -- ** Standard dynamics
         pppppp, ppppp, pppp, ppp, pp, _p,
         mp, mf,
         _f, ff, fff, ffff, fffff, ffffff,
         
-        -- * Other dynamics
+        -- ** Other dynamics
         sffz, sfz, fz, rfz, fp
   ) where
 
