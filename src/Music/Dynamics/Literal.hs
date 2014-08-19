@@ -14,13 +14,18 @@
 -------------------------------------------------------------------------------------
 
 module Music.Dynamics.Literal (
+        -- * IsDynamics class
         DynamicsL(..),
         IsDynamics(..),
 
+        -- * Literal values
+
+        -- * Standard dynamics
         pppppp, ppppp, pppp, ppp, pp, _p,
         mp, mf,
         _f, ff, fff, ffff, fffff, ffffff,
-
+        
+        -- * Other dynamics
         sffz, sfz, fz, rfz, fp
   ) where
 
